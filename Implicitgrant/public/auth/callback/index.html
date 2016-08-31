@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Implicit Grant</title>
+        <link rel="stylesheet" href="/stylesheets/style.css"></link>
+        <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"></link>     
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="/javascripts/js.cookie.js"></script>
+    </head>
+    <body>
+        <h2>OAuth Demo - Implicit Grant </h2>
+        <p>Accessing Azure service management api with OAuth 2.0</p>
+    <script>
+            
+      $(document).ready(function(){
+          var url = window.location.hash;
+
+          access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
+          console.log(access_token);
+
+          // set 1 hour expire - js.cookie.js was modified to set hourly expire
+          Cookies.set('token', access_token, { expires: 1 });
+
+          location.replace('/');
+      });
+
+    </script>
+    <p>iljoong@outlook.com</p>
+    </body>
+</html>
+

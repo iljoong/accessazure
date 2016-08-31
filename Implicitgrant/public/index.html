@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Implicit Grant Demo</title>
+        <link rel="stylesheet" href="/stylesheets/style.css"></link>
+        <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"></link>  
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="/javascripts/js.cookie.js"></script>
+        <script type="text/javascript" src="/_config.js"></script>
+    </head>
+    <body>
+    <script>
+
+    // Update _config.js
+
+      $(document).ready(function(){
+
+          var access_token = Cookies.get('token'); 
+
+          if (access_token == null ) {
+              
+            var _url = 'https://login.windows.net/' + _tenant_id + '/oauth2/authorize?response_type=token&resource=' + encodeURIComponent(_resource) 
+            + '&client_id=' + _client_id
+            + '&redirect_uri=' + encodeURIComponent(_redirect_uri);
+
+            $('#login').show();
+            $('#result').hide();
+            $('#url').attr("href", _url);
+
+            //location.replace(_url);
+          } else {
+
+            $('#login').hide();
+            $('#result').show();
+
+            $('#token').html(access_token);
+
+            var _url = 'https://management.azure.com/subscriptions/'+ _subscription  + '/providers/Microsoft.Compute/virtualmachines?api-version=2016-03-30';
+            
+            var _headers = {
+                'Authorization': 'Bearer ' + access_token,
+                'Content-Type': 'application/json;charset=utf-8'
+                }; 
+
+            $.ajax({
+                url: _url,
+                type: 'GET',
+                dataType: 'json',
+                headers: _headers,
+                success: function (result) {
+                    var html = JSON.stringify( result, null, 4 );
+                    $('#vmlist').html( html );
+                },
+                error: function (error) {
+                    $('#vmlist').html( 'Error' );                 
+                }
+
+            });
+          }
+      });
+
+    </script>
+
+    <h2>OAuth Demo - Implicit Grant</h2>
+    <p>Accessing Azure service management api with OAuth 2.0</p>
+    <div id='login'>
+        <p>Please login</p>
+        <a href="" id='url'>Login</a>
+    </div>
+    <div id='result'>
+        <h3>Access Token</h3>
+        <pre id="token"></pre>
+        <h3>VM List</h3>
+        <pre id="vmlist"></pre>
+    </div>
+    <p></p>
+    <p>iljoong@outlook.com</p>
+    </body>
+</html>
+

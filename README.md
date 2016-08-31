@@ -1,5 +1,5 @@
 # OAuth 2.0 Sample for Accessing Azure Management API
-[한글](./README_kr.md)
+[한글](/README_kr.md)
 
 This sample demonstrate how to implement accessing the Azure management API using OAuth 2.0 methods.
 
@@ -46,11 +46,11 @@ Please refer, [https://azure.microsoft.com/en-us/documentation/articles/active-d
 
 ## How to run samples
 
-* [Client grant sample](./clientgrant/README.md)
+* [Client grant sample](/Clientgrant/README.md)
 
-* [Code grant sample](./codegrant/README.md)
+* [Code grant sample](/Codegrant/README.md)
 
-* [Implict grant sample](./implicitgrant/README.md)
+* [Implict grant sample](/Implicitgrant/README.md)
 
 ## Terms & Conditions
 

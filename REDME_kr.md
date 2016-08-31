@@ -46,11 +46,11 @@ Azure AD를 통해 access token을 획득하는 OAuth 2.0의 다양한 방법이
 
 ## How to run samples
 
-* [Client grant sample](./clientgrant/README.md)
+* [Client grant sample](/Clientgrant/README.md)
 
-* [Code grant sample](./codegrant/README.md)
+* [Code grant sample](/Codegrant/README.md)
 
-* [Implict grant sample](./implicitgrant/README.md)
+* [Implict grant sample](/Implicitgrant/README.md)
 
 ## Terms & Conditions
 

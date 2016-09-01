@@ -1,18 +1,18 @@
 # OAuth 2.0 Sample for Accessing Azure Management API
 [한글](/README_kr.md)
 
-This sample demonstrate how to implement accessing the Azure management API using OAuth 2.0 methods.
+This sample demonstrates how to implement accessing the Azure management API using various OAuth 2.0 methods.
 
 ## OAuth 2.0 grant type
 
-There are several OAuth 2.0 methods to grant access token from Azure AD.
+There are several OAuth 2.0 methods to get access token from Azure AD.
 
-Simple guide to choose OAuth 2.0 method:
+Simple guide of choosing OAuth 2.0 methods:
 * `Client grant` : If you're building automated backend service and you don't need to authenticate users
 
-* `Code grant`: If you're building web application (server-side) and you need to authenticate users
+* `Code grant`: If you're building a web application (server-side) and you need to authenticate users
 
-* `Implicit grant`: If you're building client-side web application or SPA (Single Page Application) and you need to authenticate users
+* `Implicit grant`: If you're building a client-side web application or SPA (Single Page Application) and you need to authenticate users
 
 Please, refer http://alexbilbie.com/guide-to-oauth-2-grants/ for more information
 
@@ -26,7 +26,7 @@ You need to setup Azure AD before using this sample. To setup do following steps
 
 2. Configure Azure AD
 
-    you need following settings for OAuth grant
+    you need to configure following settings for OAuth grant
     
     * `tenant id`
     * `client id`
@@ -34,9 +34,9 @@ You need to setup Azure AD before using this sample. To setup do following steps
     * `redirect url`
     * `resource`
 
-    For this sample `http://localhost:3000/auth/callback` is used for `redirect url`
+    `http://localhost:3000/auth/callback` is used for `redirect url` in the samples
 
-3. Add access right to resource (Azure service managment)
+3. Add access right to user (Azure service managment)
 
 For more information, please refer [https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/](https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/)
 

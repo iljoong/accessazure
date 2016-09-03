@@ -4,7 +4,7 @@ var router = express.Router();
 var request = require('request');
 
 // get AAD config
-var _config = require('./_config.js');
+var _config = require('./__config.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -35,9 +35,9 @@ router.get('/login', function(req, res, next) {
       if (err) {
           console.log(err);
       } else {
-          console.log("body:", response.body);
+          console.log("body:", body);
           
-          res.send(response.body);                    
+          res.send(body);                    
 
       } 
   }); 
@@ -52,6 +52,7 @@ router.get('/auth/callback', function(req, res, next) {
       headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
+      json: true,
       form: {
         grant_type: 'authorization_code',
         client_id: _config.client_id,
@@ -67,9 +68,9 @@ router.get('/auth/callback', function(req, res, next) {
       if (err) {
           console.log(err);
       } else {  
-          var body = JSON.parse(response.body);
-          res.cookie('token', body.access_token, {  maxAge: 900000 });
-          res.cookie('refresh_token', body.refresh_token, {  maxAge: 900000 });
+
+          res.cookie('token', body.access_token, {  maxAge: 3600000 });
+          res.cookie('refresh_token', body.refresh_token, {  maxAge: 36000000 });
 
           res.redirect('/');                   
 
